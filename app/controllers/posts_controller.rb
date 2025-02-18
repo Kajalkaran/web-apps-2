@@ -7,14 +7,22 @@ class PostsController < ApplicationController
   end
 
   def new
+    
     # render posts/new view with new Post form
   end
 
-  # def create
+  def create
+    @posts = Post.new 
+    @posts ["author"] = params["author"]
+    @posts["body"] = params["body"]
+    @posts["image"] = params["image"]
+    @posts.save
+    redirect_to "/posts"
   #   # start with a new Post
   #   # assign user-entered form data to Post's columns
   #   # save Post row
   #   # redirect user
-  # end
+    
+  end
 
 end
